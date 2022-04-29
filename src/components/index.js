@@ -5,6 +5,7 @@ import Typography from './Typography'
 import Skeleton from './Skeleton'
 import Select from './Select'
 import MenuItem from './MenuItem'
+import IconButton from './IconButton'
 
 export {
   Card,
@@ -14,5 +15,6 @@ export {
   Typography,
   Skeleton,
   Select,
-  MenuItem
+  MenuItem,
+  IconButton
 }

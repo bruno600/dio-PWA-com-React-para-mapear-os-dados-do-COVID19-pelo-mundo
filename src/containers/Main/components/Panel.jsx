@@ -1,12 +1,12 @@
 import React, { memo } from 'react'
 import RefreshIcon from '../../../assets/images/refresh.svg'
-import { Card, Typography, Button, Select, MenuItem } from '../../../components'
+import { Card, Typography, Button, Select, MenuItem, IconButton } from '../../../components'
 import COUNTRIES from '../../../commons/constants/countries'
 import { CardPanelContentStyled, ItemStyled } from './style'
 
 const navigatorHasShare = navigator.share
 
-function Panel({ updateAt, onChange, data, country, getCovidData }) {
+function Panel({ updateAt, onChange, data, country, getCovidData, refreshData }) {
   const { cases, recovered, deaths, todayCases, todayDeaths } = data
 
   const renderCountries = (country, index) => (
@@ -52,19 +52,24 @@ function Panel({ updateAt, onChange, data, country, getCovidData }) {
     <Card>
       <CardPanelContentStyled>
         <div>
-          <Typography variant="h5" component="span" color="primary">
+          <Typography variant="h5" component="span" color="primary" display={{ xs: 'block', md: 'inline' }}>
             COVID19
           </Typography>
-          <Typography variant="h6" component="span" color="primary">
+          <Typography variant="h6" component="span" color="primary" display={{ xs: 'block', md: 'inline' }} mx={{ md: 2 }}>
             Painel Coronavirus
           </Typography>
-          <Typography variant="body2" component="span" color="primary">
+          <Typography variant="body2" component="span" color="primary" display={{ xs: 'block', md: 'inline' }}>
             Atualizado em: {updateAt}
           </Typography>
+
           <div className='pt-2'>
             <Select onChange={onChange} value={country}>
               {COUNTRIES.map(renderCountries)}
             </Select>
+
+            <IconButton sx={{ mx: 2 }} onClick={refreshData}>
+              <img src={RefreshIcon} alt="refresh button" />
+            </IconButton>
           </div>
         </div>
 

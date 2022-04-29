@@ -24,6 +24,10 @@ function Main() {
     setCountry(country)
   }
 
+  const refreshData = () => {
+    getCovidData(country)
+  }
+
   return (
     <ContainerStyled>
       <div className='mb-2'>
@@ -32,7 +36,7 @@ function Main() {
           updateAt={updateAt}
           onChange={handleChange}
           country={country}
-          getCovidData={getCovidData}
+          refreshData={refreshData}
         />
       </div>
       <Board data={data} />
